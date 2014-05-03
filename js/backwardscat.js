@@ -21,11 +21,6 @@ scanForChatWindows = function() {
       $clone.keyup(function(e) {
         if(e.keyCode == 13) {
           console.log("ENTER KEY");
-          $gchat.focus();
-          $gchat.trigger(jQuery.Event('keypress', {which: 13}));
-          $gchat.trigger(jQuery.Event('keyup', {which: 13}));
-          $clone.val('');
-          $clone.focus();
         } else {
           $gchat.val($clone.val().split("").reverse().join(""));
         }
