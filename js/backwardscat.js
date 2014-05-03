@@ -1,8 +1,8 @@
-alert('omg backwardscat added!');
-
-console.log("OMGOMGOMGOMG");
-
+/*
+alert("Loaded Backwardscat in GMail context");
+console.log("Backwardscat: loaded with jQuery in GMail context... Proof:");
 console.log(jQuery("#loading"));
+*/
 
 // Called when the user clicks on the browser action.
 chrome.browserAction.onClicked.addListener(function(tab) {

@@ -14,19 +14,16 @@
     "content_scripts": [
         {
             "matches": [
-                "https://*.google.com/*"
+                "https://mail.google.com/*"
             ],
             "css": [
                 "css/backwardscat.css"
             ],
             "js": [
                 "js/jquery/jquery.js",
-                "js/content_script.js"
+                "js/backwardscat.js"
             ]
         }
-    ],
-    "web_accessible_resources": [
-      "js/backwardscat.js"
     ]
 }
 
