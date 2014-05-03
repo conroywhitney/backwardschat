@@ -1,15 +1,32 @@
 {
-  "manifest_version": 2,
-
-  "name": "backwardscat",
-  "description": "Chat entirely in reverse on Gmail and Facebook",
-  "version": "1.0",
-
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  },
-  "permissions": [
-    "https://mail.google.com/"
-  ]
+    "manifest_version": 2,
+    "name": "backwardscat",
+    "version": "0.0.2",
+    "description": "Chat entirely in reverse on Gmail and Facebook",
+    "browser_action": {
+        "default_icon": "icon.png"
+    },
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "idle"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.google.com/*"
+            ],
+            "css": [
+                "css/backwardscat.css"
+            ],
+            "js": [
+                "js/jquery/jquery.js",
+                "js/content_script.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+      "js/backwardscat.js"
+    ]
 }
+
