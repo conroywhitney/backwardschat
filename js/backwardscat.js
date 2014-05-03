@@ -18,6 +18,10 @@ scanForChatWindows = function() {
       $clone.appendTo($parent);
       $parent.data("cloned", true);
       console.log("secure chat enabled.");
+
+      $clone.bind("enterKey",function(e){
+        console.log("pressed enter key");
+      });
     }
   });
 
@@ -25,3 +29,10 @@ scanForChatWindows = function() {
 }
 
 scanForChatWindows();
+
+$(document).keyup(function(e) {
+  if(e.keyCode == 13) {
+    console.log("ENTER KEY");
+    $(this).trigger("enterKey");
+  }
+});
