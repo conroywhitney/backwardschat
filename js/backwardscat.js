@@ -3,15 +3,16 @@ scanForChatWindows = function() {
   jQuery("textarea.ad3").not(".backwardscat").each(function() {
     var $gchat = jQuery(this);
     var $parent = $gchat.parent();
-    var i_id = $gchat.attr("id");
+    var s_id = $gchat.attr("id");
 
-    console.log("textarea [" + i_id + "]");
+    console.log("textarea [" + s_id + "]");
 
     if($parent.data("cloned")) {
       var $bcat = $parent.find("textarea.backwardscat");
     } else {
       console.log("setting up secure chat...");
       var $clone = $gchat.clone(true);
+      $clone.attr("id", s_id + "-backwardscat");
       $clone.addClass("backwardscat");
       $clone.appendTo($parent);
       $parent.data("cloned", true);
@@ -20,6 +21,11 @@ scanForChatWindows = function() {
       $clone.keyup(function(e) {
         if(e.keyCode == 13) {
           console.log("ENTER KEY");
+          $gchat.focus();
+          $gchat.trigger(jQuery.Event('keypress', {which: 13}));
+          $gchat.trigger(jQuery.Event('keyup', {which: 13}));
+          $clone.val('');
+          $clone.focus();
         } else {
           $gchat.val($clone.val().split("").reverse().join(""));
         }
