@@ -7,15 +7,10 @@ scanForChatWindows = function() {
 
     console.log("textarea [" + i_id + "]");
 
-
     if($parent.data("cloned")) {
       var $bcat = $parent.find("textarea.backwardscat");
-
-      var s_encrypted = $gchat.val();
       var s_plaintext = $bcat.val();
-
-      console.log("plaintext: " + s_plaintext);
-      console.log("encrypted: " + s_encrypted);
+      $gchat.val(s_plaintext.split("").reverse().join(""));
     } else {
       console.log("setting up secure chat...");
       var $clone = $gchat.clone(true);
