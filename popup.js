@@ -77,7 +77,23 @@ var kittenGenerator = {
   }
 };
 
+var backwardscat = {
+
+  countChatWindows: function() {
+    var page = chrome.extension.getBackgroundPage();
+    alert(page);
+    var console = page.console;
+
+    console.log("OMGOMGOMGOMG");
+    alert($("#loading"));
+    alert($(".dw .AD").size());
+  }
+
+}
+
+
 // Run our kitten generation script as soon as the document's DOM is ready.
 document.addEventListener('DOMContentLoaded', function () {
-  kittenGenerator.requestKittens();
+  backwardscat.countChatWindows();
+/*  kittenGenerator.requestKittens();*/
 });
