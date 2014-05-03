@@ -9,8 +9,6 @@ scanForChatWindows = function() {
 
     if($parent.data("cloned")) {
       var $bcat = $parent.find("textarea.backwardscat");
-      var s_plaintext = $bcat.val();
-      $gchat.val(s_plaintext.split("").reverse().join(""));
     } else {
       console.log("setting up secure chat...");
       var $clone = $gchat.clone(true);
@@ -19,8 +17,12 @@ scanForChatWindows = function() {
       $parent.data("cloned", true);
       console.log("secure chat enabled.");
 
-      $clone.bind("enterKey",function(e){
-        console.log("pressed enter key");
+      $clone.keyup(function(e) {
+        if(e.keyCode == 13) {
+          console.log("ENTER KEY");
+        } else {
+          $gchat.val($clone.val().split("").reverse().join(""));
+        }
       });
     }
   });
@@ -30,9 +32,4 @@ scanForChatWindows = function() {
 
 scanForChatWindows();
 
-$(document).keyup(function(e) {
-  if(e.keyCode == 13) {
-    console.log("ENTER KEY");
-    $(this).trigger("enterKey");
-  }
-});
+$(document)
