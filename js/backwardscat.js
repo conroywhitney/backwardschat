@@ -13,9 +13,16 @@ scanForChatWindows = function() {
 
     var messages = log.find("div[role='chatMessage'] div[dir='ltr'], div[role='chatMessage'] div.kk div[dir='ltr'], div[role='chatMessage'] div.kk span[dir='ltr']");
     messages.each(function() {
-      var txt = jQuery(this).text();
-      console.log("message: " + txt);
-      console.log("decrypted: " + decrypt(txt));
+      var $msg = jQuery(this);
+      var s_text = $msg.text();
+      if($msg.data("decrypted")) {
+        console.log("already decrypted: " + s_text);
+      } else {
+        var s_decrypted = decrypt(s_text);
+        console.log("decrypting... OK: " + s_decrypted);
+        $msg.text(s_decrypted);
+        $msg.data("decrypted", true);
+      }
     });
 
   });
