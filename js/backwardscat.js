@@ -11,10 +11,11 @@ scanForChatWindows = function() {
     console.log("log");
     console.log(log);
 
-    var messages = log.find("div[role='chatMessage']");
+    var messages = log.find("div[role='chatMessage'] div[dir='ltr'], div[role='chatMessage'] div.kk div[dir='ltr'], div[role='chatMessage'] div.kk span[dir='ltr']");
     messages.each(function() {
-      var txt = jQuery(this).find("span").last();
-      console.log("message: " + txt.text());
+      var txt = jQuery(this).text();
+      console.log("message: " + txt);
+      console.log("decrypted: " + decrypt(txt));
     });
 
   });
@@ -42,13 +43,21 @@ scanForChatWindows = function() {
         if(e.keyCode == 13) {
           console.log("ENTER KEY");
         } else {
-          $gchat.val($clone.val().split("").reverse().join(""));
+          $gchat.val(encrypt($clone.val()));
         }
       });
     }
   });
 
   setTimeout(scanForChatWindows, 5000);
+}
+
+encrypt = function(s) {
+  return s.split("").reverse().join("");
+}
+
+decrypt = function(s) {
+  return s.split("").reverse().join("");
 }
 
 scanForChatWindows();
